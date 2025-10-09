@@ -1,29 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>BT1 - CSS Selectors and Pseudo</title>
-  <link rel="stylesheet" href="BT1.css">
+  <title>Priority of Selectors</title>
+  <style>
+    p {
+      color: blue;
+    }
+    .myclass {
+      color: red;
+    }
+    #myid {
+      color: green;
+    }
+  </style>
 </head>
 <body>
-  <h1>BT1 - CSS Selectors & Pseudo Classes</h1>
-
-  <div class="priority-demo">
-    <p>Paragraph 1 (normal)</p>
-    <p class="highlight">Paragraph 2 (class selector)</p>
-    <p id="special">Paragraph 3 (ID selector)</p>
-  </div>
-
-  <hr>
-
-  <h2>Odd & Even List Example</h2>
-  <ul class="color-list">
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-    <li>Item 4</li>
-    <li>Item 5</li>
-    <li>Item 6</li>
-  </ul>
+  <h2>The Priority of Selectors</h2>
+  <p>Paragraph 1 (element selector)</p>
+  <p class="myclass">Paragraph 2 (class selector)</p>
+  <p id="myid">Paragraph 3 (id selector)</p>
 </body>
 </html>
