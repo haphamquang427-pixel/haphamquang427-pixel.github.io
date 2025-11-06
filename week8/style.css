@@ -1,0 +1,95 @@
+/* ===== Contact form styles (nested selectors + pseudo-classes) ===== */
+.container .contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.contact-details p {
+  margin: 6px 0;
+  color: #333;
+}
+
+/* FORM */
+.contact-form {
+  background: #fafafa;
+  border: 1px solid #e6e6e6;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+/* nested selector: all inputs inside contact-form */
+.contact-form label {
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+
+/* pseudo-class: focus */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #0077cc;
+  box-shadow: 0 0 0 4px rgba(0,119,204,0.08);
+  outline: none;
+}
+
+/* row containing buttons */
+.contact-form .form-row {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+/* buttons */
+.btn {
+  background: #0077cc;
+  color: #fff;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.btn-secondary {
+  background: #f2f2f2;
+  color: #333;
+}
+
+/* pseudo-class: hover for buttons */
+.btn:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+/* nested: fine-tune small screens */
+@media (max-width: 800px) {
+  .container .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #topmenu ul li {
+    font-size: 14px;
+  }
+}
+
+/* small helper note */
+.contact-form .form-note {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #666;
+}
