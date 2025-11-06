@@ -132,12 +132,16 @@ footer {
 
 /* FORM */
 .contact-form {
-  background: #fafafa;
-  border: 1px solid #e6e6e6;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 32px;              /* tăng khoảng cách bên trong */
+  border-radius: 12px;
+  width: 80%;                 /* làm form to hơn */
+  max-width: 700px;           /* giới hạn độ rộng tối đa */
+  margin: 0 auto;             /* căn giữa */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* đổ bóng rõ hơn */
 }
+
 
 /* nested selector: all inputs inside contact-form */
 .contact-form label {
@@ -175,25 +179,24 @@ footer {
 
 /* buttons */
 .btn {
-  background: #0077cc;
+  background: #28a745;        /* xanh lá cây tươi */
   color: #fff;
-  padding: 10px 14px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
 }
 
-.btn-secondary {
-  background: #f2f2f2;
-  color: #333;
-}
-
-/* pseudo-class: hover for buttons */
+/* hiệu ứng hover */
 .btn:hover {
-  filter: brightness(0.95);
-  transform: translateY(-1px);
+  background: #218838;        /* màu đậm hơn khi rê chuột */
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+
 
 /* nested: fine-tune small screens */
 @media (max-width: 800px) {
