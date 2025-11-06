@@ -1,3 +1,122 @@
+/* ===== Global Styles ===== */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #004080;
+  margin-bottom: 10px;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 30px 0;
+}
+
+/* ===== Navigation Bar ===== */
+#topmenu {
+  background-color: #004080;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+#topmenu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#topmenu ul li {
+  margin: 0;
+}
+
+#topmenu ul li a {
+  display: block;
+  padding: 14px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* pseudo-class hover */
+#topmenu ul li a:hover {
+  background-color: #0077cc;
+  color: #fff;
+}
+
+/* ===== About Section ===== */
+#about {
+  text-align: center;
+  padding-top: 40px;
+}
+
+#about h1 {
+  font-size: 2.2em;
+}
+
+#about h3 {
+  color: #0077cc;
+  margin-bottom: 15px;
+}
+
+/* ===== Education, Experience, Skills ===== */
+section {
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 20px;
+}
+
+ul {
+  list-style-type: square;
+  padding-left: 25px;
+}
+
+/* ===== Skills list formatting ===== */
+#skills ul {
+  columns: 2;
+  list-style-type: "✔ ";
+}
+
+/* ===== Contact Section ===== */
+#contact a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: #004080;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
 /* ===== Contact form styles (nested selectors + pseudo-classes) ===== */
 .container .contact-grid {
   display: grid;
@@ -82,8 +201,13 @@
     grid-template-columns: 1fr;
   }
 
-  #topmenu ul li {
+  #topmenu ul {
+    flex-wrap: wrap;
+  }
+
+  #topmenu ul li a {
     font-size: 14px;
+    padding: 10px;
   }
 }
 
