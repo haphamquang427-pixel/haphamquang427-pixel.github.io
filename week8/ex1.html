@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sum of Two Numbers</title>
+  <script>
+    function calculateSum() {
+      let a = prompt("Enter the first number:");
+      let b = prompt("Enter the second number:");
+
+      // Kiểm tra xem người dùng có nhập đúng số không
+      if (isNaN(a) || isNaN(b) || a === "" || b === "") {
+        alert("❌ Error: Please enter valid numbers!");
+      } else {
+        let sum = parseFloat(a) + parseFloat(b);
+        alert("✅ The sum of two numbers is: " + sum);
+      }
+    }
+  </script>
+</head>
+<body onload="calculateSum()">
+  <h2>Exercise 1: Sum of Two Numbers</h2>
+  <p>Open the page and input two numbers to see the result.</p>
+</body>
+</html>
