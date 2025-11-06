@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Display Information</title>
-  <script>
-    function showInfo() {
-      let name = prompt("Enter your name:");
-      let age = prompt("Enter your age:");
-      document.write("<h2>Hello, " + name + "!</h2>");
-      document.write("<p>You are " + age + " years old.</p>");
-    }
-  </script>
+<title>Using document.write()</title>
+<script type="text/javascript">
+var name,age;
+name=prompt("Enter your name:");
+age=prompt("Enter your age:");
+document.write("Hello "+name+"!<br>");
+document.write("You are "+age+" years old.");
+</script>
 </head>
-<body onload="showInfo()">
-  <h2>Exercise 2: Using document.write</h2>
+<body>
+<h2>Exercise 2: Using document.write()</h2>
 </body>
 </html>
