@@ -2,57 +2,237 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Mini calculator</title>
-<script language="javascript">
-function calculate() {
-    var a = document.frmCal.txta;
-    var b = document.frmCal.txtb;
-    var o = document.frmCal.slto;
-    var r = document.frmCal.txtr;
-
-    var numberFormat = /^[+-]?\d+(\.\d+)?$/;
-
-    if(numberFormat.test(a.value) == false) {
-        alert("a must be a number!");
-        a.focus();
-    } else if(numberFormat.test(b.value) == false) {
-        alert("b must be a number!");
-        b.focus();
+<title>Mini Calculator Pro</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: #333;
     }
-    else if((o.value=="/" || o.value=="%") && parseInt(b.value)==0) {
-        alert("b can't be 0!");
-        r.value = "";
-        b.focus();
-    } else
-        r.value = eval(a.value + o.value + b.value);
-}
-</script>
+    .calculator {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        width: 320px;
+        text-align: center;
+    }
+    h2 {
+        margin: 0 0 25px;
+        color: #5a67d8;
+        font-size: 24px;
+    }
+    table {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    td {
+        padding: 8px 0;
+        text-align: left;
+    }
+    label {
+        font-weight: 600;
+        color: #4c51bf;
+    }
+    input[type="text"], select {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: border 0.3s;
+        box-sizing: border-box;
+    }
+    input:focus, select:focus {
+        border-color: #667eea;
+        outline: none;
+    }
+    input[readonly] {
+        background: #f8fafc;
+        font-weight: bold;
+        color: #2d3748;
+        font-size: 18px;
+    }
+    .btn {
+        width: 100%;
+        padding: 14px;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 10px;
+    }
+    .btn:hover {
+        background: #5a67d8;
+        transform: translateY(-2px);
+    }
+    .error {
+        color: #e53e3e;
+        font-size: 13px;
+        margin-top: 8px;
+        min-height: 20px;
+        display: none;
+    }
+    .footer {
+        margin-top: 20px;
+        font-size: 12px;
+        color: #718096;
+    }
+</style>
 </head>
 <body>
-<form name="frmCal">
-<table border="0" align="center">
-    <tr><td colspan="2" align="center">
-        <h2>MINI CALCULATOR </h2></td></tr>
-    <tr><td align="right">a : </td>
-        <td><input name="txta" /></td></tr>
-    <tr><td align="right">b : </td>
-        <td><input name="txtb" /></td></tr>
-    <tr><td align="right">Operator: </td>
-        <td><select name="slto">
-                <option value="+"></option>
-                <option value="-"></option>
-                <option value="*"></option>
-                <option value="/"></option>
-                <option value="%"></option>
-            </select>
-        </td></tr>
-    <tr><td align="right">Result: </td>
-        <td><input name="txtr" readonly /></td></tr>
-    <tr><td colspan="2" align="center">
-        <input type="button" value="Calculate"
-               onClick="calculate()">
-    </td></tr>
-</table>
-</form>
+
+<div class="calculator">
+    <h2>MINI CALCULATOR PRO</h2>
+    <form name="frmCal" onsubmit="return false;">
+        <table>
+            <tr>
+                <td><label>a:</label></td>
+                <td><input name="txta" id="txta" placeholder="Nhập số a" /></td>
+            </tr>
+            <tr>
+                <td><label>b:</label></td>
+                <td><input name="txtb" id="txtb" placeholder="Nhập số b" /></td>
+            </tr>
+            <tr>
+                <td><label>Toán tử:</label></td>
+                <td>
+                    <select name="slto" id="slto">
+                        <option value="+">+</option>
+                        <option value="-">−</option>
+                        <option value="*">×</option>
+                        <option value="/">÷</option>
+                        <option value="%">%</option>
+                        <option value="^">^ (lũy thừa)</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Kết quả:</label></td>
+                <td><input name="txtr" id="txtr" readonly /></td>
+            </tr>
+        </table>
+
+        <input type="button" class="btn" value="TÍNH TOÁN" onclick="calculate()">
+        <div class="error" id="errorMsg"></div>
+    </form>
+    <div class="footer">Hỗ trợ: +, −, ×, ÷, %, ^</div>
+</div>
+
+<script>
+function calculate() {
+    const aInput = document.getElementById('txta');
+    const bInput = document.getElementById('txtb');
+    const opSelect = document.getElementById('slto');
+    const resultInput = document.getElementById('txtr');
+    const errorMsg = document.getElementById('errorMsg');
+
+    // Reset error
+    errorMsg.style.display = 'none';
+    errorMsg.textContent = '';
+
+    const aStr = aInput.value.trim();
+    const bStr = bInput.value.trim();
+    const op = opSelect.value;
+
+    // Regex: số nguyên hoặc thập phân, có dấu +/-
+    const numRegex = /^[+-]?\d*\.?\d+$/;
+
+    if (!aStr || !numRegex.test(aStr)) {
+        showError("Vui lòng nhập số hợp lệ cho a!");
+        aInput.focus();
+        return;
+    }
+    if (!bStr || !numRegex.test(bStr)) {
+        showError("Vui lòng nhập số hợp lệ cho b!");
+        bInput.focus();
+        return;
+    }
+
+    const a = parseFloat(aStr);
+    const b = parseFloat(bStr);
+
+    let result;
+    let valid = true;
+
+    switch (op) {
+        case '+':
+            result = a + b;
+            break;
+        case '-':
+            result = a - b;
+            break;
+        case '*':
+            result = a * b;
+            break;
+        case '/':
+            if (b === 0) {
+                showError("Không thể chia cho 0!");
+                bInput.focus();
+                return;
+            }
+            result = a / b;
+            if (!Number.isInteger(result)) result = result.toFixed(4).replace(/\.?0+$/, '');
+            break;
+        case '%':
+            if (b === 0) {
+                showError("Không thể lấy dư cho 0!");
+                bInput.focus();
+                return;
+            }
+            result = a % b;
+            break;
+        case '^':
+            // Xử lý lũy thừa an toàn
+            if (a === 0 && b < 0) {
+                showError("0 mũ số âm: không xác định!");
+                return;
+            }
+            if (b > 1000) {
+                showError("Số mũ quá lớn (>1000)!");
+                return;
+            }
+            result = Math.pow(a, b);
+            // Giới hạn hiển thị nếu quá lớn
+            if (result > 1e12) {
+                result = result.toExponential(4);
+            } else if (!Number.isInteger(result)) {
+                result = parseFloat(result.toFixed(6));
+            }
+            break;
+        default:
+            showError("Toán tử không hợp lệ!");
+            return;
+    }
+
+    // Hiển thị biểu thức đẹp
+    const symbols = { '+': '+', '-': '−', '*': '×', '/': '÷', '%': '%', '^': '^' };
+    resultInput.value = `${a} ${symbols[op]} ${b} = ${result}`;
+}
+
+function showError(msg) {
+    const errorMsg = document.getElementById('errorMsg');
+    errorMsg.textContent = msg;
+    errorMsg.style.display = 'block';
+}
+
+// Hỗ trợ Enter
+document.addEventListener('keydown', e => {
+    if (e.key === 'Enter') calculate();
+});
+
+// Focus vào a khi load
+window.onload = () => document.getElementById('txta').focus();
+</script>
+
 </body>
 </html>
