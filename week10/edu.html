@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Menu</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bar-bg: #222;       
+      --link-color: #d84b4b;
+      --bar-height: 72px;   
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: "Merriweather", serif;
+      background:#fff;
+      color:#222;
+    }
+
+    .topbar{
+      background:var(--bar-bg);
+      height:var(--bar-height);
+      display:flex;
+      align-items:center;
+      padding:0 4%;
+      box-shadow: none;
+    }
+
+    .menu{
+      width:100%;
+      display:flex;
+      justify-content:center; 
+    }
+
+    .menu ul{
+      list-style:none;
+      display:flex;
+      gap:4.8rem; 
+      align-items:center;
+    }
+
+    .menu a{
+      display:inline-block;
+      color:var(--link-color);
+      text-decoration:none;
+      font-size:22px;       
+      font-weight:600;
+      letter-spacing:0.8px;
+      padding:8px 0;
+      text-shadow: 0 0 0 rgba(0,0,0,0);
+      transition: color .15s ease, transform .12s ease;
+    }
+
+    .menu a:hover{
+      transform:translateY(-2px);
+      color:#ff6b6b;
+    }
+
+    @media (max-width:720px){
+      .menu ul{gap:1.6rem}
+      .menu a{font-size:18px}
+    }
+
+    .main{
+      min-height: calc(100vh - var(--bar-height));
+      padding:40px 4%;
+      background: #fafafa; 
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar" role="banner">
+    <nav class="menu" role="navigation" aria-label="Main menu">
+      <ul>
+        <li><a href="#">Trang chủ</a></li>
+        <li><a href="#">Sách ©</a></li>
+        <li><a href="#">Tác giả ™</a></li>
+        <li><a href="#">Liên hệ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main" role="main">
+  </main>
+
+</body>
+</html>
