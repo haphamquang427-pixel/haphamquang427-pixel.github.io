@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 1 - Registration Form</title>
+
+    <style>
+        /* Sử dụng Flexbox để căn form */
+        form {
+            width: 300px;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column; /* các phần tử xếp dọc */
+            gap: 10px; /* khoảng cách giữa các input */
+        }
+
+        .strength {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 
+ĐỀ BÀI:
+- Form đăng ký gồm Username, Password, Profile Picture
+- Kiểm tra độ mạnh mật khẩu
+-->
+
+<form>
+    <label>Username</label>
+    <!-- input text cho username -->
+    <input type="text" id="username" minlength="5" maxlength="15">
+
+    <label>Password</label>
+    <!-- input password -->
+    <input type="password" id="password" onkeyup="checkStrength()">
+
+    <!-- Hiển thị độ mạnh mật khẩu -->
+    <span class="strength" id="strengthText"></span>
+
+    <label>Profile Picture</label>
+    <!-- input file -->
+    <input type="file" accept=".jpg,.png">
+
+    <button type="submit">Register</button>
+</form>
+
+<script>
+    // Hàm kiểm tra độ mạnh mật khẩu
+    function checkStrength() {
+        // Lấy giá trị password
+        let password = document.getElementById("password").value;
+        let strengthText = document.getElementById("strengthText");
+
+        // Kiểm tra có chữ và số hay không
+        let hasLetter = /[a-zA-Z]/.test(password);
+        let hasNumber = /[0-9]/.test(password);
+
+        // Điều kiện độ mạnh
+        if (password.length < 6) {
+            strengthText.innerHTML = "Weak";
+        } else if (hasLetter && hasNumber) {
+            strengthText.innerHTML = "Strong";
+        } else {
+            strengthText.innerHTML = "Medium";
+        }
+    }
+</script>
+
+</body>
+</html>
