@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<style>
+    .tab {
+        padding: 10px;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .active {
+        background-color: lightblue;
+    }
+
+    .content {
+        display: none;
+    }
+</style>
+
+<body>
+
+<div>
+    <span class="tab active" onclick="switchTab(0)">Features →</span>
+    <span class="tab" onclick="switchTab(1)">Pricing €</span>
+    <span class="tab" onclick="switchTab(2)">Reviews</span>
+    <span class="tab" onclick="switchTab(3)">Support</span>
+</div>
+
+<div class="content" style="display:block;">Features content</div>
+<div class="content">Pricing content</div>
+<div class="content">Reviews content</div>
+<div class="content">Support content</div>
+
+<script>
+    function switchTab(index) {
+        let tabs = document.getElementsByClassName("tab");
+        let contents = document.getElementsByClassName("content");
+
+        for (let i = 0; i < tabs.length; i++) {
+            tabs[i].classList.remove("active");
+            contents[i].style.display = "none";
+        }
+
+        tabs[index].classList.add("active");
+        contents[index].style.display = "block";
+    }
+</script>
+
+</body>
+</html>
+<!-- Exercise 5: Create a tabbed content interface with these requirements:
+1. Create 4 tabs: Features ®, Pricing €, Reviews, Support
+2. Add arrow icons (→) to indicate active tab
+3. Style tabs with different states (active/inactive)
+4. Add tab functionality that:
+o Shows corresponding content when tab is clicked
+o Use switchTab() function
+o Use classList.add() and classList.remove()
+  -->

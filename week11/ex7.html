@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 7</title>
+
+    <style>
+        form {
+            width: 300px;
+            margin: auto;
+            border: 1px solid black;
+            padding: 15px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 
+ĐỀ BÀI:
+- Form liên hệ đơn giản
+- Kiểm tra các trường có bị bỏ trống không
+-->
+
+<form onsubmit="return validateForm()">
+    <label>Name</label>
+    <input type="text" id="name">
+
+    <label>Email</label>
+    <input type="email" id="email">
+
+    <label>Message</label>
+    <textarea id="message"></textarea>
+
+    <button type="submit">Submit</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+    function validateForm() {
+        // Lấy giá trị các input
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let message = document.getElementById("message").value;
+
+        // Kiểm tra nếu có ô trống
+        if (name === "" || email === "" || message === "") {
+            alert("Please fill in all fields");
+            return false; // ngăn form submit
+        }
+
+        // Nếu hợp lệ
+        document.getElementById("result").innerHTML = "Form submitted successfully!";
+        return false; // chặn submit để hiện thông báo
+    }
+</script>
+
+</body>
+</html>
+<!-- Exercise 7: Create a simple contact form with these requirements:
+1. Include these fields:
+o Name (text input)
+o Email (email input)
+o Message (textarea)
+2. Add proper labels and submit button
+3. Style form with proper spacing and borders
+4. Add basic validation:
+o Check if fields are empty
+o Show success message when all filled
+  -->

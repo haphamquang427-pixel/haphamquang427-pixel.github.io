@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Menu</h2>
+
+<ul>
+    <li class="veg">Salad ≥ 5$</li>
+    <li class="non-veg">Steak § 15$</li>
+    <li class="veg">Soup ® 4$</li>
+    <li class="non-veg">Chicken 10$</li>
+</ul>
+
+<button onclick="filterMenu()">Filter Menu</button>
+
+<script>
+    let showVeg = false;
+
+    function filterMenu() {
+        let items = document.getElementsByClassName("non-veg");
+
+        // Toggle hiển thị món không chay
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.display = showVeg ? "list-item" : "none";
+        }
+
+        showVeg = !showVeg;
+    }
+</script>
+
+</body>
+</html>
+<!-- Exercise 4: Create a restaurant menu interface with these requirements:
+1. Create sections for: Appetizers ®, Main Course §, Desserts, Drinks
+2. Add prices with currency symbol (≥)
+3. Add "Filter Menu" button that:
+o Toggles between showing all items or only vegetarian options
+o Use filterMenu() function
+o Use getElementsByClassName()
+  -->

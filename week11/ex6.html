@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 6</title>
+
+    <style>
+        /* Class ẩn menu */
+        .hidden {
+            display: none;
+        }
+
+        nav {
+            margin: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 
+ĐỀ BÀI:
+- Tạo thanh điều hướng cho website bán sách
+- Có nút Toggle Menu để ẩn/hiện menu
+-->
+
+<button onclick="toggleMenu()">Toggle Menu</button>
+
+<nav id="menu">
+    Home • 
+    Books © • 
+    Authors ™ • 
+    Contact
+</nav>
+
+<script>
+    // Hàm ẩn / hiện menu
+    function toggleMenu() {
+        // Lấy phần tử nav theo id
+        let menu = document.getElementById("menu");
+
+        // Toggle class "hidden"
+        menu.classList.toggle("hidden");
+    }
+</script>
+
+</body>
+</html>
+<!-- Exercise 6: Create a bookstore website navigation with these requirements:
+1. Create navigation with 4 links: Home, Books ©, Authors ™, Contact
+2. Add bullets (•) between navigation items
+3. Add "Toggle Menu" button that:
+o Shows/hides the navigation menu
+o Use toggleMenu() function
+o Use classList.toggle("hidden")
+  -->

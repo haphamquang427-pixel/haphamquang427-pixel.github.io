@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 2</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 400px;
+            margin: 30px auto;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Bảng giá linh kiện máy tính © ™ • -->
+
+<table id="priceTable">
+    <tr>
+        <th>Part</th>
+        <th>Price</th>
+    </tr>
+    <tr><td>CPU ©</td><td>$200</td></tr>
+    <tr><td>RAM ™</td><td>$100</td></tr>
+    <tr><td>SSD •</td><td>$150</td></tr>
+    <tr><td>GPU</td><td>$500</td></tr>
+</table>
+
+<button onclick="changeColor()">Change Color</button>
+
+<script>
+    // Đổi màu chữ của bảng
+    function changeColor() {
+        document.getElementById("priceTable").style.color = "red";
+    }
+</script>
+
+</body>
+</html>
+<!-- Exercise 2: Create a computer parts price list table with these requirements:
+1. Create table with 4 computer parts and prices
+2. Use HTML5 structure (DOCTYPE, head, body)
+3. Include these HTML entities: ©, ™, •
+4. Style table with borders and padding
+5. Add "Change Color" button that:
+o When clicked, changes all table text to red
+o Use changeColor() function and getElementById()
+  -->

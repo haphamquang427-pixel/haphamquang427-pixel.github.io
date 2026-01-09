@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 3</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 400px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* màu xen kẽ */
+        }
+
+        td, th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Subject ®</th>
+        <th>Grade ≥</th>
+    </tr>
+    <tr><td>Math</td><td class="grade">8</td></tr>
+    <tr><td>Physics</td><td class="grade">7</td></tr>
+    <tr><td>Chemistry</td><td class="grade">9</td></tr>
+    <tr><td>English §</td><td class="grade">8</td></tr>
+</table>
+
+<button onclick="calculateAverage()">Calculate Average</button>
+<p id="result"></p>
+
+<script>
+    function calculateAverage() {
+        // Lấy tất cả các ô có class grade
+        let grades = document.querySelectorAll(".grade");
+        let sum = 0;
+
+        // Duyệt từng điểm
+        grades.forEach(function(item) {
+            sum += Number(item.innerHTML);
+        });
+
+        let avg = sum / grades.length;
+        document.getElementById("result").innerHTML = "Average: " + avg;
+    }
+</script>
+
+</body>
+</html>
+<!-- Exercise 3: Create a student grade calculator with these requirements:
+1. Create a table showing 4 subjects and grades
+2. Use HTML5 structure (DOCTYPE, head, body)
+3. Include these HTML entities: ®, §, ≥
+4. Style table with alternating row colors
+5. Add "Calculate Average" button that:
+o When clicked, calculates and displays average grade
+o Use calculateAverage() function and querySelectorAll()
+  -->

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 8</title>
+
+    <style>
+        form {
+            display: grid; /* dùng CSS Grid */
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            width: 400px;
+            margin: auto;
+        }
+
+        button {
+            grid-column: span 2; /* nút chiếm 2 cột */
+        }
+    </style>
+</head>
+<body>
+
+<!-- 
+ĐỀ BÀI:
+- Đăng ký nhận newsletter
+- Kiểm tra email và checkbox
+-->
+
+<form onsubmit="return validateNewsletter()">
+
+    <input type="text" id="fullname" placeholder="Full Name">
+    <input type="email" id="email" placeholder="Email">
+
+    <!-- Radio button -->
+    <div>
+        <input type="radio" name="type"> Monthly
+        <input type="radio" name="type"> Yearly
+    </div>
+
+    <!-- Checkbox -->
+    <div>
+        <input type="checkbox" class="interest"> Tech
+        <input type="checkbox" class="interest"> Design
+    </div>
+
+    <button type="submit">Subscribe</button>
+</form>
+
+<p id="message"></p>
+
+<script>
+    function validateNewsletter() {
+        let email = document.getElementById("email").value;
+        let interests = document.getElementsByClassName("interest");
+        let checked = false;
+
+        // Kiểm tra email có chứa @ không
+        if (!email.includes("@")) {
+            alert("Invalid email");
+            return false;
+        }
+
+        // Kiểm tra ít nhất 1 checkbox được chọn
+        for (let i = 0; i < interests.length; i++) {
+            if (interests[i].checked) {
+                checked = true;
+            }
+        }
+
+        if (!checked) {
+            alert("Please select at least one interest");
+            return false;
+        }
+
+        document.getElementById("message").innerHTML = "Subscription successful!";
+        return false;
+    }
+</script>
+
+</body>
+</html>
+<!-- Exercise 8: Create a newsletter subscription system with these requirements:
+1. Include these elements:
+o Full Name (text input)
+o Email (email input)
+o Subscription Type (radio buttons: Monthly/Yearly)
+o Interests (checkboxes)
+2. Add form validation with these rules:
+o Email must contain @ and domain
+o At least one interest must be selected
+3. Style form with CSS Grid layout
+4. Show success message when form is valid
+  -->
